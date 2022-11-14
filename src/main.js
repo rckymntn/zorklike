@@ -1,13 +1,15 @@
-#!/usr/bin/env node 
+#!/usr/bin/env node
 
 import chalk from "chalk";
-import chalkAnimation, { Animation } from "chalk-animation";
-import inquierer from "inquirer";
+import chalkAnimation from "chalk-animation";
+import inquirer from "inquirer";
+import { Game } from "./game.js";
+
 
 import { sleep } from "./util.js";
 
 class Main {
-    
+
     constructor() {
         console.clear();
         this.init();
@@ -18,19 +20,14 @@ class Main {
 
     }
 
-    async main() {
-        await this.title();
-        await this.menu();
-    }
-
     async title() {
-        let title: Animation = chalkAnimation.glitch("Zorklike");
+        let title = chalkAnimation.glitch("Zorklike");
         await sleep();
         title.stop();
     }
 
     async menu() {
-        await inquierer.prompt({
+        await inquirer.prompt({
             name: "tutorialPrompt",
             type: "list",
             message: "Welcome to Zorklike",
@@ -43,26 +40,26 @@ class Main {
         }).then(async (response) => {
             switch (response.tutorialPrompt) {
                 case "Play":
-                    console.log("Play selected");
                     break;
                 case "Tutorial":
-                    console.log("Tutorial selected");
                     await this.tutorial();
                     await this.menu();
                     break;
                 case "Credits":
-                    console.log("Credits selected");
                     await this.credits();
                     await this.menu();
                     break;
                 case "Quit":
-                    console.log("Quit selected");
                     await this.quit();
                     break;
             }
         }).catch((error) => {
             console.log(`Error: ${error}`);
         });
+    }
+
+    async play() {
+        
     }
 
     async tutorial() {
@@ -91,6 +88,10 @@ class Main {
         process.exit(err);
     }
 
+    async main() {
+        await this.title();
+        await this.menu();
+    }
 }
 
 new Main();
