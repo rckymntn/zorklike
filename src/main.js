@@ -3,9 +3,8 @@
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
 import inquirer from "inquirer";
-import { Game } from "./game.js";
 
-
+import Game from "./game.js";
 import { sleep } from "./util.js";
 
 class Main {
@@ -40,6 +39,7 @@ class Main {
         }).then(async (response) => {
             switch (response.tutorialPrompt) {
                 case "Play":
+                    await this.play();
                     break;
                 case "Tutorial":
                     await this.tutorial();
@@ -59,7 +59,7 @@ class Main {
     }
 
     async play() {
-        
+        let game = new Game();
     }
 
     async tutorial() {
