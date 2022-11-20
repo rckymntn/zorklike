@@ -1,0 +1,30 @@
+{
+    "SaveDataOne": {
+        "Time": "",
+        "Name": "",
+        "Currency": "",
+        "CurrentRoom": "",
+        "EventFlags": {
+            "EventOne": false,
+            "EventTwo": false
+        }
+    }, "SaveDataTwo": {
+        "Time": "",
+        "Name": "",
+        "Currency": "",
+        "CurrentRoom": "",
+        "EventFlags": {
+            "EventOne": false,
+            "EventTwo": false
+        }
+    }, "SaveDataThree": {
+        "Time": "",
+        "Name": "",
+        "Currency": "",
+        "CurrentRoom": "",
+        "EventFlags": {
+            "EventOne": false,
+            "EventTwo": false
+        }
+    }
+}
