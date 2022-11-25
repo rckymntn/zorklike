@@ -59,7 +59,36 @@ class Main {
     }
 
     async play() {
-        let game = new Game();
+        await this.loadOrNew();
+    }
+
+    async loadOrNew() {
+        await inquirer.prompt({
+            name: "loadOrNew",
+            type: "list",
+            message: "Load or start a new game?",
+            choices: [
+                "Load Game",
+                "New Game"
+            ]
+        }).then(async (response) => {
+            switch(response) {
+                case "Load Game":
+                    this.loadGame();
+                    break;
+                case "New Game":
+                    this.newGame();
+                    break;
+            }
+        });
+    }
+
+    async newGame() {
+
+    }
+
+    async loadGame() {
+
     }
 
     async tutorial() {
