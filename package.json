@@ -2,20 +2,22 @@
   "name": "zorklike",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
-  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --experimental-json-modules src/main.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rckymntn/zorklike.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rckymntn/zorklike/issues"
+  },
+  "homepage": "https://github.com/rckymntn/zorklike#readme",
   "dependencies": {
-    "chalk": "^4.1.2",
-    "chalk-animation": "^2.0.3",
-    "figlet": "^1.5.2",
-    "inquirer": "^9.1.4",
-    "minify": "^9.1.0"
+    "ts-node": "^10.9.1"
   }
 }
