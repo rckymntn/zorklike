@@ -1,0 +1,38 @@
+#game {
+    font-family: monospace;
+    display: inline-block;
+    margin-left: 20vw;
+    margin-right: auto;
+}
+
+#console {
+    font-family: inherit;
+    display: inline-block;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#consoleHistory {
+    font-family: inherit;
+    display: block;
+    resize: none;
+    height: 50vh;
+    width: 50vw;
+}
+
+#consoleInput {
+    font-family: inherit;
+    display: block;
+    resize: none;
+    height: 5vh;
+    width: 50vw;
+}
+
+#characterSheet {
+    font-family: inherit;
+    display: inline-block;
+    resize: none;
+    height: 50vh;
+    width: 10vw;
+}
