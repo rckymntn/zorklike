@@ -1,16 +1,40 @@
-#game {
+body {
     font-family: monospace;
+}
+
+textarea, input {
+    outline: none;
+}
+
+#header {
+    font-family: inherit;
+    text-align: center;
+    height: 5vh;
+}
+
+#game {
+    font-family: inherit;
+    display: block;
+    margin: auto;
+    max-height: 75vh;
+    min-height: 75vh;
+    max-width: 75vw;
+    min-width: 75vw;
+    align-items: center;
+    border: 1px solid red;
+}
+
+#leftPad {
+    font-family: inherit;
     display: inline-block;
-    margin-left: 20vw;
-    margin-right: auto;
+    resize: none;
+    height: 50vh;
+    width: 10vw;
 }
 
 #console {
     font-family: inherit;
     display: inline-block;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 #consoleHistory {
@@ -35,4 +59,10 @@
     resize: none;
     height: 50vh;
     width: 10vw;
+}
+
+#footer {
+    font-family: inherit;
+    text-align: center;
+    height: 5vh;
 }

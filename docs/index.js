@@ -50,13 +50,33 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/Room.ts":
+/*!*********************!*\
+  !*** ./src/Room.ts ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Room)\n/* harmony export */ });\nclass Room {\n    constructor() {\n        this.connectedRooms = { \"north\": null, \"east\": null, \"south\": null, \"west\": null };\n        this.actorList = [];\n        this.connectedRooms = { \"north\": null, \"east\": null, \"south\": null, \"west\": null };\n        this.description = \"The starting room.\";\n    }\n}\n\n\n//# sourceURL=webpack://zorklike/./src/Room.ts?");
+
+/***/ }),
+
+/***/ "./src/ScreenManager.ts":
+/*!******************************!*\
+  !*** ./src/ScreenManager.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ ScreenManager)\n/* harmony export */ });\nclass ScreenManager {\n    constructor() {\n        this.consoleHistory = document.getElementById(\"consoleHistory\");\n        this.consoleInput = document.getElementById(\"consoleInput\");\n        this.characterSheet = document.getElementById(\"characterSheet\");\n        this.consoleInput.addEventListener(\"keypress\", (keypress) => {\n            if (keypress.key === \"Enter\") {\n                this.readFromConsoleInput();\n            }\n        });\n    }\n    writeToConsoleHistory(toWrite) {\n        this.consoleHistory.value += `${toWrite}\\n`;\n    }\n    clearConsoleHistroy() {\n        this.consoleHistory.value = \"\";\n    }\n    readFromConsoleInput() {\n        this.writeToConsoleHistory(this.consoleInput.value);\n        this.consoleInput.value = \"\";\n    }\n    updateCharacterSheet(player) {\n        this.characterSheet.value = `${player.biography.name}\\n${player.biography.race} ${player.biography.classType}\\n\\n${player.attributes.toString()}`;\n    }\n}\n\n\n//# sourceURL=webpack://zorklike/./src/ScreenManager.ts?");
+
+/***/ }),
+
 /***/ "./src/main.ts":
 /*!*********************!*\
   !*** ./src/main.ts ***!
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Goblin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Goblin */ \"./src/Goblin.ts\");\n/* harmony import */ var _Player__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Player */ \"./src/Player.ts\");\n/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ \"./src/util.ts\");\n\n\n\nfunction main() {\n    const consoleInput = document.getElementById(\"consoleInput\");\n    if (consoleInput) {\n        consoleInput.addEventListener(\"keypress\", (keypress) => {\n            if (keypress.key === \"Enter\") {\n                (0,_util__WEBPACK_IMPORTED_MODULE_2__.readFromConsoleInput)();\n            }\n        });\n    }\n    const consoleHistory = document.getElementById(\"consoleHistory\");\n    if (consoleHistory) {\n        consoleHistory.scrollTop = consoleHistory.scrollHeight;\n    }\n    let player = new _Player__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\n    let goblin = new _Goblin__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\n    player.attack(goblin);\n    goblin.attack(player);\n    player.talk(goblin);\n    goblin.talk(player);\n    (0,_util__WEBPACK_IMPORTED_MODULE_2__.writeToConsoleHistory)(\"Greetings, adventurer!\");\n    player.updateCharacterSheet();\n}\nwindow.onload = main;\n\n\n//# sourceURL=webpack://zorklike/./src/main.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Goblin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Goblin */ \"./src/Goblin.ts\");\n/* harmony import */ var _Player__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Player */ \"./src/Player.ts\");\n/* harmony import */ var _Room__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Room */ \"./src/Room.ts\");\n/* harmony import */ var _ScreenManager__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ScreenManager */ \"./src/ScreenManager.ts\");\n\n\n\n\nfunction main() {\n    const screenManager = new _ScreenManager__WEBPACK_IMPORTED_MODULE_3__[\"default\"]();\n    let startingRoom = new _Room__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\n    screenManager.writeToConsoleHistory(startingRoom.description);\n    let player = new _Player__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\n    let goblin = new _Goblin__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\n    startingRoom.actorList.push(player, goblin);\n    player.attack(goblin);\n    goblin.attack(player);\n    player.talk(goblin);\n    goblin.talk(player);\n    screenManager.writeToConsoleHistory(\"Greetings, adventurer!\");\n    player.updateCharacterSheet();\n}\nwindow.onload = main;\n\n\n//# sourceURL=webpack://zorklike/./src/main.ts?");
 
 /***/ }),
 
@@ -66,7 +86,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Gob
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"readFromConsoleInput\": () => (/* binding */ readFromConsoleInput),\n/* harmony export */   \"sleep\": () => (/* binding */ sleep),\n/* harmony export */   \"writeToConsoleHistory\": () => (/* binding */ writeToConsoleHistory)\n/* harmony export */ });\nconst writeToConsoleHistory = (toWrite) => {\n    const consoleHistory = document.getElementById(\"consoleHistory\");\n    consoleHistory.value += `${toWrite}\\n`;\n    if (toWrite.includes(\"clear\")) {\n        consoleHistory.value = \"\";\n    }\n    // Handle input\n};\nconst readFromConsoleInput = () => {\n    const consoleInput = document.getElementById(\"consoleInput\");\n    writeToConsoleHistory(consoleInput.value);\n    consoleInput.value = \"\";\n};\nconst sleep = (ms) => new Promise((r) => setTimeout(r, ms));\n\n\n//# sourceURL=webpack://zorklike/./src/util.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"clearConsoleHistory\": () => (/* binding */ clearConsoleHistory),\n/* harmony export */   \"readFromConsoleInput\": () => (/* binding */ readFromConsoleInput),\n/* harmony export */   \"sleep\": () => (/* binding */ sleep),\n/* harmony export */   \"updateCharacterSheet\": () => (/* binding */ updateCharacterSheet),\n/* harmony export */   \"writeToConsoleHistory\": () => (/* binding */ writeToConsoleHistory)\n/* harmony export */ });\nconst writeToConsoleHistory = (toWrite) => {\n    const consoleHistory = document.getElementById(\"consoleHistory\");\n    consoleHistory.value += `${toWrite}\\n`;\n    // Handle input\n};\nconst readFromConsoleInput = () => {\n    const consoleInput = document.getElementById(\"consoleInput\");\n    writeToConsoleHistory(consoleInput.value);\n    consoleInput.value = \"\";\n};\nconst updateCharacterSheet = (player) => {\n    const characterSheet = document.getElementById(\"characterSheet\");\n    characterSheet.value = `${player.biography.name}\\n${player.biography.race} ${player.biography.classType}\\n\\n${player.attributes.toString()}`;\n};\nconst clearConsoleHistory = () => {\n    const consoleHistory = document.getElementById(\"consoleHistory\");\n    consoleHistory.value = \"\";\n};\nconst sleep = (ms) => new Promise((r) => setTimeout(r, ms));\n\n\n//# sourceURL=webpack://zorklike/./src/util.ts?");
 
 /***/ })
 
