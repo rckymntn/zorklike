@@ -1,34 +1,25 @@
 import Goblin from "./Goblin";
 import Player from "./Player";
-import { readFromConsoleInput, writeToConsoleHistory } from "./util";
+import Room from "./Room";
+import ScreenManager from "./ScreenManager";
 
 function main(): void {
+    const screenManager = new ScreenManager();
 
-    const consoleInput = document.getElementById("consoleInput");
-    if (consoleInput) {
-        consoleInput.addEventListener("keypress", (keypress) => {
-            if (keypress.key === "Enter") {
-                readFromConsoleInput();
-            }
-        });
-    }
-
-    const consoleHistory = document.getElementById("consoleHistory");
-    if (consoleHistory) {
-        consoleHistory.scrollTop = consoleHistory.scrollHeight;
-    }
-    
-
+    let startingRoom = new Room();
+    screenManager.writeToConsoleHistory(startingRoom.description);
     let player = new Player();
     let goblin = new Goblin();
+    startingRoom.actorList.push(player, goblin);
     
     player.attack(goblin);
     goblin.attack(player);
     player.talk(goblin);
     goblin.talk(player);
     
-    writeToConsoleHistory("Greetings, adventurer!");
+    screenManager.writeToConsoleHistory("Greetings, adventurer!");
     player.updateCharacterSheet();
+
 }
 
 window.onload = main;
