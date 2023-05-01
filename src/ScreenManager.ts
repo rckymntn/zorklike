@@ -7,11 +7,7 @@ export default class ScreenManager {
     readonly characterSheet = document.getElementById("characterSheet") as HTMLTextAreaElement;
 
     constructor() {
-        this.consoleInput.addEventListener("keypress", (keypress) => {
-            if (keypress.key === "Enter") {
-                this.readFromConsoleInput();
-            }
-        });
+
     }
 
     public writeToConsoleHistory(toWrite: string): void {
@@ -22,9 +18,11 @@ export default class ScreenManager {
         this.consoleHistory.value = "";
     }
 
-    public readFromConsoleInput(): void {
-        this.writeToConsoleHistory(this.consoleInput.value);
+    public readFromConsoleInput(): string {
+        let read: string = this.consoleInput.value;
+        this.writeToConsoleHistory(read);
         this.consoleInput.value = "";
+        return read;
     }
 
     public updateCharacterSheet(player: Player): void {
