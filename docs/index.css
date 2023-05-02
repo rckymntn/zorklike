@@ -21,7 +21,6 @@ textarea, input {
     max-width: 75vw;
     min-width: 75vw;
     align-items: center;
-    border: 1px solid red;
 }
 
 #leftPad {
